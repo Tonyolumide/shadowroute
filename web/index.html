@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ShadowRoute — Private FXRP Routing</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+  <header><a class="brand" href="#">SHADOW<span>ROUTE</span></a><div class="network"><i></i>Coston2</div><button id="connect">Connect wallet</button></header>
+  <main>
+    <section class="hero"><p class="eyebrow">Confidential interoperability on Flare</p><h1>Move XRP.<br><em>Hide the strategy.</em></h1><p class="lede">Mint FXRP from XRPL, commit encrypted execution constraints, and let a trusted enclave choose an approved route.</p><div class="proof"><span>LIVE TESTNET PROOF</span><strong id="balance">Checking router…</strong></div></section>
+    <section class="panel">
+      <div class="steps"><b class="active">01 Intent</b><b>02 Interoperate</b><b>03 Route</b></div>
+      <label>Amount to mint <span>FXRP</span><input id="amount" type="number" value="1" min="0.000001" step="0.1"></label>
+      <div class="grid"><label>Minimum output<input id="minimum" type="number" value="0.56" min="0"></label><label>Maximum route risk<select id="risk"><option value="1">Low</option><option value="2" selected>Balanced</option><option value="3">Flexible</option></select></label></div>
+      <label>Allowed route<label class="check"><input type="checkbox" checked> Reviewed Coston2 adapter only</label></label>
+      <div class="privacy"><span>◈</span><div><strong>Private inside FCC</strong><small>Minimum output, risk tolerance and route preferences are evaluated inside a TEE. Only a commitment and signed authorization reach Flare.</small></div></div>
+      <button class="primary" id="prepare">Preview private commitment</button><p id="message" class="message">Preview mode is read-only. Use the verified journey below to inspect the completed live execution.</p>
+    </section>
+    <section class="flow"><article><b>1</b><h3>XRPL payment</h3><p>1.2 XRP carries the 0xFE Smart Account operation memo.</p><a href="https://testnet.xrpl.org/transactions/27135C1598F4A1D64D9CA70B484FEE19311F9D34CA39D0C8451E93BAA7E3962A" target="_blank">View proof ↗</a></article><article><b>2</b><h3>FDC + atomic mint</h3><p>FDC proves payment; FXRP is minted directly into the funded intent.</p><a href="https://coston2-explorer.flare.network/tx/0x2bb9fc9a8fa793a998e24b1d7bc385e7cfab2e8e0f4647d96afb24075c45415d" target="_blank">View funding ↗</a></article><article><b>3</b><h3>FCC evaluation</h3><p id="fcc-status">Loading encrypted FCC proof…</p><a href="https://coston2-explorer.flare.network/tx/0xd6f0d0a63637f90ef2d481ee9e22e25fb731f90bd656bbf7a207c4a150292a53" target="_blank">View instruction ↗</a></article><article><b>4</b><h3>Pangolin delivery</h3><p>Valid FCC authorization delivered 0.594003 USDT0 above the signed minimum.</p><a href="https://coston2-explorer.flare.network/tx/0xaed6ef40cc308c8c76425f50acc24a19aff1e00c9a6a2817621d1482aff2d598" target="_blank">View execution ↗</a></article></section>
+  </main><footer><span>Prototype · unaudited · testnet only</span><a href="https://coston2-explorer.flare.network/address/0x3b9D9EaFf4D79A51505918c03989A16D5F84b511" target="_blank">ShadowRouter ↗</a></footer><script src="app.js"></script>
+</body></html>

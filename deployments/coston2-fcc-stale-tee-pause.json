@@ -1,0 +1,10 @@
+{
+  "network": "coston2",
+  "extensionId": "66196",
+  "staleTeeId": "0x5b46FbD4c653554ae2DD0Adbb761eb65408aeD7D",
+  "currentTeeId": "0xF536C559248223B94cF8EA77f3E776859E5eCDb7",
+  "pauseTransactionHash": "0x859c0370bf9220033af7b610acc6188410bc2c9ac842af087c6f1945ea0bde22",
+  "activeTeeIdsAfter": [
+    "0xF536C559248223B94cF8EA77f3E776859E5eCDb7"
+  ]
+}

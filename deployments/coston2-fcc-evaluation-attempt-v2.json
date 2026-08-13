@@ -1,0 +1,10 @@
+{
+  "network": "coston2",
+  "instructionId": "0x9ea36d67f17452dd4867c738aa36b1c1adeb1da21a065d68cce46d9c53b14b7f",
+  "intentId": "0x3038cff2fbf9cddeea95e4caf5f113b0dc1f7bfcbfe7c9c6e19e629a38e4f5c1",
+  "status": "infrastructure-rejected",
+  "reason": "proxy retained stale TEE session across container recreation and rejected the registered TEE ID",
+  "assetsMoved": false,
+  "retrySubmitted": false,
+  "proxySessionRepaired": true
+}

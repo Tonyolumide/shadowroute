@@ -1,0 +1,33 @@
+{
+  "network": "coston2",
+  "assetManager": "0xc1Ca88b937d0b528842F95d5731ffB586f4fbDFA",
+  "fxrp": "0x0b6A3645c240605887a5532109323A3E12273dc7",
+  "redeemer": "0xaC09ed711E5d7186D416f64E6385c43b76D42D80",
+  "xrplRecipient": "r9cpSRL32zcMPt1CHuMPtQUyBuxGnXFVQp",
+  "amountUBA": "5000000",
+  "transactionHash": "0x4adb56186c3e4006ab802b95405bc3706dba32d518d02a961ea17c023083b2c9",
+  "blockNumber": "33581971",
+  "status": "completed",
+  "xrplPaymentTransactionHash": "DCDDBD5D1ABCF1F389FB25BEEE03287178050E4CA8262B1ABD612CE1916A3484",
+  "netXrpReceived": "4.975",
+  "remainingFXRP": "0",
+  "redemptionEvents": [
+    {
+      "name": "RedemptionRequested",
+      "args": {
+        "agentVault": "0xd5dEFe2c62D48788BB3889534FBFe7Aea0602D64",
+        "redeemer": "0xaC09ed711E5d7186D416f64E6385c43b76D42D80",
+        "requestId": "43011068",
+        "paymentAddress": "r9cpSRL32zcMPt1CHuMPtQUyBuxGnXFVQp",
+        "valueUBA": "5000000",
+        "feeUBA": "25000",
+        "firstUnderlyingBlock": "19601165",
+        "lastUnderlyingBlock": "19601689",
+        "lastUnderlyingTimestamp": "1785765911",
+        "paymentReference": "0x4642505266410002000000000000000000000000000000000000000002904bfc",
+        "executor": "0xaC09ed711E5d7186D416f64E6385c43b76D42D80",
+        "executorFeeNatWei": "0"
+      }
+    }
+  ]
+}

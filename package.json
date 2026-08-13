@@ -1,0 +1,43 @@
+{
+  "name": "shadowroute-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "demo": "hardhat run scripts/demo.js",
+    "demo:web": "node web/server.mjs",
+    "deploy:coston2": "hardhat run scripts/deploy-coston2.js --network coston2",
+    "deploy:v2-adapter": "hardhat run scripts/deploy-v2-adapter.js --network coston2",
+    "seed:pangolin": "hardhat run scripts/seed-pangolin-coston2.js --network coston2",
+    "execute:pangolin": "hardhat run scripts/execute-pangolin-intent.js --network coston2",
+    "encode:v2-route": "node integration/v2-route.mjs",
+    "verify:coston2": "node integration/verify-coston2.mjs",
+    "verify:v2-venue": "node --env-file=.env integration/verify-v2-venue.mjs",
+    "prepare:mint-deposit": "node integration/prepare-mint-deposit.mjs",
+    "prepare:redemption": "node --env-file=.env integration/prepare-redemption.mjs",
+    "execute:redemption": "node --env-file=.env integration/execute-redemption.mjs",
+    "run:mint-deposit": "node --env-file=.env integration/run-mint-deposit.mjs",
+    "resume:mint-deposit": "node --env-file=.env integration/resume-mint-deposit.mjs",
+    "test:integration": "node --test integration/*.test.mjs",
+    "clean": "hardhat clean"
+  },
+  "dependencies": {
+    "@flarenetwork/flare-wagmi-periphery-package": "3.6.0",
+    "viem": "2.55.10",
+    "xrpl": "5.0.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "3.0.8",
+    "@openzeppelin/contracts": "5.1.0",
+    "chai": "^4.5.0",
+    "dotenv": "16.4.7",
+    "ethers": "^6.13.5",
+    "hardhat": "2.22.18"
+  },
+  "overrides": {
+    "axios": "1.19.0",
+    "elliptic": "6.6.1",
+    "ws": "8.21.1"
+  }
+}

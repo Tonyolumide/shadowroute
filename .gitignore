@@ -1,0 +1,10 @@
+node_modules/
+artifacts/
+cache/
+.env
+.env.*.local
+coverage/
+fcc-scaffold/config/proxy/extension_proxy.coston2.toml
+fcc-scaffold/config/proxy/extension_proxy.coston2.docker.toml
+fcc-scaffold/.git.scaffold-backup/
+.vercel/

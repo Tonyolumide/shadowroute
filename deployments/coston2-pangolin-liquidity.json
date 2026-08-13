@@ -1,0 +1,14 @@
+{
+  "network": "coston2",
+  "venue": "Pangolin",
+  "router": "0x1435422E3765898D3bD167DC06b36e9a8AEf4784",
+  "factory": "0x4a2ba0812a92c78b3975bA25509b08b49972dFFa",
+  "pair": "0x3c1c08d166d7bD4AC3Ae0e677f31b07D7618f257",
+  "token0": "0x0b6A3645c240605887a5532109323A3E12273dc7",
+  "token1": "0xC1A5B41512496B80903D1f32d6dEa3a73212E71F",
+  "reserve0": "5000000",
+  "reserve1": "5000000",
+  "lpOwner": "0xaC09ed711E5d7186D416f64E6385c43b76D42D80",
+  "lpBalance": "4999000",
+  "liquidityTransactionHash": "0xe3b9515317a2b676873428f67e7fffd3d42494da2cd3efd20e7f21a6611bdc5a"
+}

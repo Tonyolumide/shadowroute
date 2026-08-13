@@ -1,0 +1,8 @@
+{
+  "network": "coston2",
+  "deployer": "0xaC09ed711E5d7186D416f64E6385c43b76D42D80",
+  "teeSigner": "0x9488f777FED4a63173f14e0D244C4776242BF548",
+  "shadowRouter": "0x3b9D9EaFf4D79A51505918c03989A16D5F84b511",
+  "deploymentTransactionHash": "0x9dd9cb65722fe2e9d0638995a1a5b4e5c8f92fd6d7668137d63fa13547d95f60",
+  "authorizationSchema": "RouteAuthorization-v2"
+}

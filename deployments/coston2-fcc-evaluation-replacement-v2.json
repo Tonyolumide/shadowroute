@@ -1,0 +1,10 @@
+{
+  "network": "coston2",
+  "instructionId": "0x86f8c7a0293698755d87fe7ca2d36cba70042e7da28ef8522c893a7f74ea7c08",
+  "intentId": "0x3038cff2fbf9cddeea95e4caf5f113b0dc1f7bfcbfe7c9c6e19e629a38e4f5c1",
+  "status": "provider-delivery-timeout",
+  "proxyResult": "HTTP 404",
+  "proxyReceivedInstruction": false,
+  "assetsMoved": false,
+  "swapSubmitted": false
+}

@@ -1,0 +1,16 @@
+{
+  "network": "coston2",
+  "router": "0x33d9BC1d038194138803a95D1C92BC4809C0bD54",
+  "fxrp": "0x0b6A3645c240605887a5532109323A3E12273dc7",
+  "personalAccount": "0xc9DdAC13F3CEc34355ACB3578E6c94ce7B521D61",
+  "netMintUBA": "1000000",
+  "ciphertextHash": "0x580f93d7417edc38f6027aa4e44e44d79e3c53c8bf36aa23fc4092b72e2af037",
+  "expiry": "1785768914",
+  "userOpHash": "0x2eeed48ae01675c73008e77f9d9c96ddbd44fe0a7d74478b71e5772a8bb079c8",
+  "xrplTransactionHash": "A6C923C2B980001D7A65F5A0D4F652CCBFB8261872AC4A8E2AD7B104EAF2B6C8",
+  "fdcRequestTransactionHash": "0x89e5d4f73127c517c54cea1bfe252a5ca866114ebb9e8960d88bb04b1c8f0e94",
+  "fdcRoundId": 1414797,
+  "flareMintTransactionHash": "0x7f8a196e6939a74ee320edea1396bd7f690ea9df4a706177b1c636cacc3d0730",
+  "routerBalanceUBA": "1000000",
+  "nextIntentNonce": "1"
+}

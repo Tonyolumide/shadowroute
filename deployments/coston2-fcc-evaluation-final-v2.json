@@ -1,0 +1,13 @@
+{
+  "network": "coston2",
+  "instructionId": "0x1012dfb32128738a6077265614501cfa299a16d935a7f3e50564124d93e304ea",
+  "intentId": "0x3038cff2fbf9cddeea95e4caf5f113b0dc1f7bfcbfe7c9c6e19e629a38e4f5c1",
+  "status": "provider-delivery-timeout",
+  "pollingWindowSeconds": 360,
+  "proxyResult": "HTTP 404",
+  "teeReceivedInstruction": false,
+  "signedAuthorizationProduced": false,
+  "swapSubmitted": false,
+  "finalIntentStatus": "Funded",
+  "routerFXRPUBA": "1000000"
+}

@@ -1,0 +1,8 @@
+{
+  "network": "coston2",
+  "shadowRouter": "0x3b9D9EaFf4D79A51505918c03989A16D5F84b511",
+  "exchangeRouter": "0x1435422E3765898D3bD167DC06b36e9a8AEf4784",
+  "adapter": "0x1CF477B7C2d84e368c570fF6FBe47416B3081175",
+  "deployTransactionHash": "0x1a394276c46131a20575ceae25d27cccdde1f77487e1974e8071be762b6710ca",
+  "allowlistTransactionHash": "0x4dbd0254ff6b4c62efea4f79df69eb4a73943bb1083793e45941d32d7788cfe2"
+}

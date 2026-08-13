@@ -1,0 +1,28 @@
+{
+  "network": "coston2",
+  "chainId": 114,
+  "flareTeeManager": "0x1a9C4A0f9D76c0b1D91d22E24E573a9b377618aE",
+  "instructionSender": "0xfa532C30BE44f657adE742Ed05D90D44F748318F",
+  "extensionIdDecimal": "66196",
+  "extensionId": "0x0000000000000000000000000000000000000000000000000000000000010294",
+  "teeId": "0xF536C559248223B94cF8EA77f3E776859E5eCDb7",
+  "previousTeeIds": [
+    "0x5b46FbD4c653554ae2DD0Adbb761eb65408aeD7D"
+  ],
+  "proxyHost": "canal-headlamp-uncover.ngrok-free.dev",
+  "registeredOn": "2026-08-13",
+  "registrationMethod": "fresh rRap after tee-proxy develop upgrade",
+  "availabilityInstructionId": "0x2b533edbbd5b0fedaf94d233ab5c2aa474334fa046e2a363382b34bf148773f8",
+  "localProxyStatus": "HTTP 200",
+  "publicProxyStatus": "HTTP 200",
+  "teeManagerStatus": 2,
+  "teeRegistrationStatus": "PRODUCTION",
+  "instructionSenderExtensionId": "66196",
+  "firstEvaluation": {
+    "instructionId": "0xef90229ad318327b735d4366d7577684c74b592d704d9d0fd569f2b62c1c76b2",
+    "status": "rejected",
+    "reason": "plaintext payload rejected by TEE decrypt boundary",
+    "assetsMoved": false,
+    "retrySubmitted": false
+  }
+}
