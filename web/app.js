@@ -14,6 +14,8 @@ const previousStage = document.querySelector("#previous-stage");
 const stageLabels = [...document.querySelectorAll(".dialog-steps span")];
 let previewData;
 let currentStage = 0;
+let connectedAccount = null;
+const COSTON2_CHAIN_ID = "0x72";
 
 const stages = [
   data => `<p class="stage-kicker">Your strategy stays private</p><h3>Commit the constraints, not the strategy.</h3><dl><div><dt>Amount</dt><dd>${data.amount} FXRP</dd></div><div><dt>Minimum output</dt><dd>${data.minimumOutput} USDT0</dd></div><div><dt>Risk</dt><dd>${data.riskLabel}</dd></div></dl><div class="commitment"><small>LOCAL SHA-256 COMMITMENT</small><code>0x${data.commitment}</code></div><p class="stage-note">Generated locally. No wallet signature or transaction was requested.</p>`,
@@ -43,15 +45,45 @@ async function refreshBalance() {
   } catch { document.querySelector("#balance").textContent = "Live proof available on explorer"; }
 }
 
-document.querySelector("#connect").addEventListener("click", async () => {
-  if (!window.ethereum) { message.textContent = "Install an EVM wallet to connect to Coston2."; return; }
+async function connectWallet() {
+  if (!window.ethereum) { message.textContent = "Connect an EVM wallet on Coston2 before approving a route."; return false; }
   try {
     const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
+    const chainId = await window.ethereum.request({ method: "eth_chainId" });
+    if (chainId.toLowerCase() !== COSTON2_CHAIN_ID) {
+      connectedAccount = null;
+      message.textContent = "Switch your wallet to Coston2 (chain ID 114) before approving a route.";
+      return false;
+    }
+    connectedAccount = account;
     document.querySelector("#connect").textContent = `${account.slice(0, 6)}…${account.slice(-4)}`;
-  } catch { message.textContent = "Wallet connection was cancelled."; }
-});
+    message.textContent = "Wallet connected on Coston2. You can now preview the private commitment.";
+    return true;
+  } catch { connectedAccount = null; message.textContent = "Wallet connection was cancelled. No route was approved."; return false; }
+}
+
+document.querySelector("#connect").addEventListener("click", connectWallet);
+
+if (window.ethereum?.on) {
+  window.ethereum.on("accountsChanged", accounts => {
+    connectedAccount = accounts[0] || null;
+    document.querySelector("#connect").textContent = connectedAccount ? `${connectedAccount.slice(0, 6)}…${connectedAccount.slice(-4)}` : "Connect wallet";
+    if (!connectedAccount) message.textContent = "Wallet disconnected. Connect again before approving a route.";
+  });
+  window.ethereum.on("chainChanged", chainId => {
+    if (chainId.toLowerCase() !== COSTON2_CHAIN_ID) {
+      connectedAccount = null;
+      document.querySelector("#connect").textContent = "Connect wallet";
+      message.textContent = "Wrong network. Switch to Coston2 (chain ID 114) before approving a route.";
+    }
+  });
+}
 
 document.querySelector("#prepare").addEventListener("click", async () => {
+  if (!connectedAccount && !(await connectWallet())) {
+    document.querySelector("#connect").focus();
+    return;
+  }
   const risk = document.querySelector("#risk");
   const intentValues = { amount: document.querySelector("#amount").value, minimumOutput: document.querySelector("#minimum").value, maximumRisk: Number(risk.value), network: "coston2" };
   const intent = JSON.stringify(intentValues);
