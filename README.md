@@ -2,6 +2,42 @@
 
 ShadowRoute is an FXRP-first confidential intent router for Flare. This repository contains the first executable vertical slice: users fund an intent identified by a ciphertext hash, a TEE-authorized signer approves one allowlisted route, and the router enforces the signed output token and minimum output before releasing funds.
 
+**Live app:** https://shadowroute.vercel.app
+
+**Hackathon submission:** [`SUBMISSION.md`](SUBMISSION.md)
+
+**Demo recording guide:** [`DEMO_SCRIPT.md`](DEMO_SCRIPT.md)
+
+## Summer Signal entry
+
+ShadowRoute targets both **Interoperable Asset Products** and **Confidential Compute Apps**. It is designed for XRP holders and XRPFi applications that need to move value into Flare DeFi without publishing execution constraints such as minimum output, risk tolerance or venue preferences before settlement.
+
+Flare is essential to the product: FDC proves the XRPL payment, FAssets supplies FXRP, Smart Accounts atomically deposit the minted asset, FCC privately evaluates the policy, and the ShadowRouter contract verifies the resulting authorization before an allowlisted Pangolin adapter can execute.
+
+### Built during Summer Signal
+
+- The `ShadowRouter` confidential-intent settlement contract and EIP-712 authorization model.
+- Atomic XRPL payment → FDC proof → FXRP direct mint → Smart Account deposit integration.
+- ShadowRoute's signed evaluator inside the official FCC extension scaffold.
+- Encrypted FCC instruction submission and a registered Coston2 TEE reaching production status.
+- A venue-pinned Pangolin adapter, seeded FXRP/USDT0 liquidity and router allowlisting.
+- Two complete public testnet executions, including the current `0.594003 USDT0` delivery.
+- A public judge experience with wallet-free evidence exploration and wallet-gated custom intent preview.
+
+### Current limitations
+
+- Testnet prototype only; contracts have not been independently audited.
+- The public app demonstrates verified evidence and local commitment construction; it does not submit the full XRPL payment and FCC execution pipeline from the browser.
+- The FCC proxy and simulated TEE must remain online during judging.
+- Ownership is single-key in this MVP and should move to multisig plus timelocked governance.
+
+### Roadmap
+
+1. **Pilot:** add an in-app XRPL payment request, transaction progress tracking and recovery for interrupted FDC rounds.
+2. **Harden:** commission contract review, move administration to multisig/timelock and add multiple independently operated route evaluators.
+3. **Expand:** onboard more allowlisted venues and private policy types while preserving exact-calldata authorization.
+4. **Launch:** deploy against production FAssets and support wallet partners or XRPFi applications through an intent SDK.
+
 ## Architecture
 
 ```mermaid

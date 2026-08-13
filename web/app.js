@@ -18,7 +18,7 @@ let connectedAccount = null;
 const COSTON2_CHAIN_ID = "0x72";
 
 const stages = [
-  data => `<p class="stage-kicker">Your strategy stays private</p><h3>Commit the constraints, not the strategy.</h3><dl><div><dt>Amount</dt><dd>${data.amount} FXRP</dd></div><div><dt>Minimum output</dt><dd>${data.minimumOutput} USDT0</dd></div><div><dt>Risk</dt><dd>${data.riskLabel}</dd></div></dl><div class="commitment"><small>LOCAL SHA-256 COMMITMENT</small><code>0x${data.commitment}</code></div><p class="stage-note">Generated locally. No wallet signature or transaction was requested.</p>`,
+  data => `<p class="stage-kicker">${data.verified ? "Verified Coston2 intent" : "Your strategy stays private"}</p><h3>Commit the constraints, not the strategy.</h3><dl><div><dt>Amount</dt><dd>${data.amount} FXRP</dd></div><div><dt>Minimum output</dt><dd>${data.minimumOutput} USDT0</dd></div><div><dt>Risk</dt><dd>${data.riskLabel}</dd></div></dl><div class="commitment"><small>${data.verified ? "ON-CHAIN POLICY COMMITMENT" : "LOCAL SHA-256 COMMITMENT"}</small><code>${data.commitment.startsWith("0x") ? data.commitment : `0x${data.commitment}`}</code></div><p class="stage-note">${data.verified ? "Read-only evidence from the completed live flow. No wallet or transaction is required." : "Generated locally. No wallet signature or transaction was requested."}</p>`,
   () => `<p class="stage-kicker">Verified interoperability</p><h3>XRPL payment becomes private Flare execution.</h3><div class="proof-list"><div><b>1</b><span><strong>XRPL payment proved</strong><small>FDC verified the payment and Smart Account memo.</small></span><i>✓</i></div><div><b>2</b><span><strong>FXRP minted atomically</strong><small>The funded intent received 1 FXRP on Coston2.</small></span><i>✓</i></div><div><b>3</b><span><strong>FCC evaluated privately</strong><small>The TEE returned a signed route authorization.</small></span><i>✓</i></div></div>`,
   () => `<p class="stage-kicker">Authorized route</p><h3>Pangolin delivered above the private minimum.</h3><div class="route-result"><span>FXRP</span><b>→</b><span>Pangolin</span><b>→</b><span>USDT0</span></div><dl><div><dt>Required minimum</dt><dd>0.560000 USDT0</dd></div><div><dt>Delivered</dt><dd class="success">0.594003 USDT0</dd></div><div><dt>Status</dt><dd class="success">Executed ✓</dd></div></dl><a class="proof-link" href="https://coston2-explorer.flare.network/tx/0xaed6ef40cc308c8c76425f50acc24a19aff1e00c9a6a2817621d1482aff2d598" target="_blank">Inspect execution on Coston2 ↗</a>`
 ];
@@ -30,6 +30,13 @@ function renderStage() {
   stageLabels.forEach((label, index) => label.classList.toggle("active", index === currentStage));
   previousStage.hidden = currentStage === 0;
   nextStage.textContent = currentStage === 0 ? "Continue to Interoperate" : currentStage === 1 ? "Continue to Route" : "Done";
+}
+
+function openPreview(data) {
+  previewData = data;
+  currentStage = 0;
+  renderStage();
+  dialog.showModal();
 }
 
 async function refreshBalance() {
@@ -89,11 +96,13 @@ document.querySelector("#prepare").addEventListener("click", async () => {
   const intent = JSON.stringify(intentValues);
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(intent));
   const preview = [...new Uint8Array(digest)].map(x => x.toString(16).padStart(2, "0")).join("");
-  previewData = { ...intentValues, riskLabel: risk.options[risk.selectedIndex].text, commitment: preview };
-  currentStage = 0;
-  renderStage();
-  dialog.showModal();
+  openPreview({ ...intentValues, riskLabel: risk.options[risk.selectedIndex].text, commitment: preview, verified: false });
   message.textContent = `Commitment 0x${preview.slice(0, 12)}… generated locally. No transaction was submitted.`;
+});
+
+document.querySelector("#explore").addEventListener("click", () => {
+  openPreview({ amount: "1", minimumOutput: "0.56", maximumRisk: 2, riskLabel: "Balanced", network: "coston2", commitment: "0xc31e10843523058bf70fa530051d9829ce235dea474dc56892d6f3c01f04be1b", verified: true });
+  message.textContent = "Showing the completed Coston2 execution in read-only judge mode. No wallet or transaction is required.";
 });
 
 nextStage.addEventListener("click", () => {
